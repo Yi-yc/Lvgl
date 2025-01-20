@@ -46,8 +46,9 @@ void TIM3_IRQHandler(void)   //TIM3ÖÐ¶Ï
 //				i=0;
 //				LED1=!LED1;
 //			}
-			
+#if LV_TICK_CUSTOM == 0
 			lv_tick_inc(1);
+#endif
 	}
 }
 

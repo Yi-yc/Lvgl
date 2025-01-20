@@ -70,6 +70,9 @@ int main(void)
 		LCD_Fill(120,0,160,LCD_H,YELLOW);
 		LCD_Fill(180,0,200,LCD_H,WHITE);
 		LCD_Fill(200,0,240,LCD_H,LIGHTBLUE);
+	
+#if LV_TICK_CUSTOM == 0
+	
 		lv_init();
 		lv_port_disp_init();
 		lv_port_indev_init();	
@@ -80,8 +83,6 @@ int main(void)
 		lv_obj_set_size(slider, 200, 15);  // 设置滑块的宽度为200，高度为20
 		lv_slider_set_range(slider, 0, 100);
     lv_obj_set_event_cb(slider, slider_event_cb);
-
-
 
 		lv_obj_t *roller1 = lv_roller_create(lv_scr_act(), NULL);
     lv_roller_set_options(roller1,
@@ -101,29 +102,28 @@ int main(void)
 
     lv_roller_set_visible_row_count(roller1, 4);
     lv_obj_align(roller1, NULL, LV_ALIGN_CENTER, 0, 0);
-    lv_obj_set_event_cb(roller1, event_handler);
-//	
+    lv_obj_set_event_cb(roller1, event_handler);	
 	
-//		lv_obj_t *switch_cool;        
-//		switch_cool = lv_switch_create(lv_scr_act(), NULL);                                       
-//    lv_obj_set_size(switch_cool,100, 100);      
-//    lv_obj_align(switch_cool,NULL, LV_ALIGN_IN_TOP_LEFT, 0, 150);  
-//    lv_obj_set_event_cb(switch_cool, switch_event_cb);
-//		
-//		lv_obj_t *button;        
-//		button = lv_switch_create(lv_scr_act(), NULL);                                       
-//    lv_obj_set_size(button,100, 100);      
-//    lv_obj_align(button,NULL, LV_ALIGN_IN_TOP_LEFT, 200, 150);  
-//    lv_obj_set_event_cb(button, button_event_cb);
 
-//		lvgl_demo();
-	
-	while(1)
-	{
+		lv_obj_t *button;        
+		button = lv_switch_create(lv_scr_act(), NULL);                                       
+    lv_obj_set_size(button,100, 100);      
+    lv_obj_align(button,NULL, LV_ALIGN_IN_TOP_LEFT, 200, 300);  
+    lv_obj_set_event_cb(button, button_event_cb);
+		while(1)
+		{
+			
+				delay_ms(1);		
+				lv_task_handler();
+		}	 
 		
-			delay_ms(1);		
-			lv_task_handler();
-	}	 
+#else
+
+		lvgl_demo();
+				
+#endif
+	
+//		
 
  
 }	 

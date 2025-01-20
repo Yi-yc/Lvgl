@@ -107,7 +107,7 @@ void start_task(void *pvParameters)
 }
 
 
-// 
+ 
 static void switch_event_cb(lv_obj_t * obj, lv_event_t event)
 {
     if (event == LV_EVENT_CLICKED) 
@@ -130,8 +130,8 @@ static void slider_event_cb(lv_obj_t * obj, lv_event_t event)
         printf("Slider value: %d\r\n", value);
     } 
 		
- 
 }
+
 
 
 /**
@@ -153,9 +153,11 @@ void lv_demo_task(void *pvParameters)
 		
 		lv_obj_t *switch_cool;        
 		switch_cool = lv_switch_create(lv_scr_act(), NULL);                                       
-    lv_obj_set_size(switch_cool,100, 100);      
+    lv_obj_set_size(switch_cool,50, 50);      
     lv_obj_align(switch_cool,NULL, LV_ALIGN_IN_TOP_LEFT, 0, 150);  
 		lv_obj_set_event_cb(switch_cool, switch_event_cb);
+	
+
 	
     while(1)
     {

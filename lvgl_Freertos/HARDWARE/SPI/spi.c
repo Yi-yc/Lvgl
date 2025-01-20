@@ -26,7 +26,7 @@ void SPI1_Init(void)
     GPIO_SetBits(LCD_MOSI_GPIO_PORT, LCD_MOSI_GPIO_PIN); // 拉高MOSI管脚
 
     /********************配置SPI外设***********************/
-    SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4; // SPI1挂载APB2(总线速度:72Mhz)4分频为18Mhz
+    SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2; // SPI1挂载APB2(总线速度:72Mhz)2分频为36Mhz
     SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;                       // 第二个时钟沿进行采样
     SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;                        // 空闲时钟状态为高
     SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;                  // 数据宽度为8bit
